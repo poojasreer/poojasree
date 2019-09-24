@@ -1,0 +1,165 @@
+SQL> select substr('poojasree',9) from dual;
+
+S                                                                               
+-                                                                               
+e                                                                               
+
+SQL> select * from emp concat(substr(ename,1,1)substr(ename,-1)) ;
+select * from emp concat(substr(ename,1,1)substr(ename,-1)) 
+                        *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL>  select concat(substr(ename,1,1)substr(ename,-1)) from emp;
+ select concat(substr(ename,1,1)substr(ename,-1)) from emp
+        *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select ename,concat(substr(ename,1,1)substr(ename,-1)) from emp;
+select ename,concat(substr(ename,1,1)substr(ename,-1)) from emp
+             *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select ename ,from emp where ename like'%s';
+select ename ,from emp where ename like'%s'
+              *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select ename from emp where ename like'%s%';
+
+no rows selected
+
+SQL> select ename from emp where ename like '%s%';
+
+no rows selected
+
+SQL> select ename from emp where ename like'%s';
+
+no rows selected
+
+SQL> select ename from emp where ename like'%S';
+
+ENAME                                                                           
+----------                                                                      
+JONES                                                                           
+ADAMS                                                                           
+JAMES                                                                           
+
+SQL> select ename concat(substr(ename,1,1),substr(ename,-1)) from emp;
+select ename concat(substr(ename,1,1),substr(ename,-1)) from emp
+                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select ename,concat(substr(ename,1,1),substr(ename,-1)) from emp;
+
+ENAME      CO                                                                   
+---------- --                                                                   
+SMITH      SH                                                                   
+ALLEN      AN                                                                   
+WARD       WD                                                                   
+JONES      JS                                                                   
+MARTIN     MN                                                                   
+BLAKE      BE                                                                   
+CLARK      CK                                                                   
+SCOTT      ST                                                                   
+KING       KG                                                                   
+TURNER     TR                                                                   
+ADAMS      AS                                                                   
+
+ENAME      CO                                                                   
+---------- --                                                                   
+JAMES      JS                                                                   
+FORD       FD                                                                   
+MILLER     MR                                                                   
+
+14 rows selected.
+
+SQL> select instr('developer',e,-4,1) from emp;
+select instr('developer',e,-4,1) from emp
+                         *
+ERROR at line 1:
+ORA-00904: "E": invalid identifier 
+
+
+SQL> select instr('developer','e',-4,1) from emp;
+
+INSTR('DEVELOPER','E',-4,1)                                                     
+---------------------------                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+
+INSTR('DEVELOPER','E',-4,1)                                                     
+---------------------------                                                     
+                          4                                                     
+                          4                                                     
+                          4                                                     
+
+14 rows selected.
+
+SQL> select instr('pooja','e')from emp;
+
+INSTR('POOJA','E')                                                              
+------------------                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+
+INSTR('POOJA','E')                                                              
+------------------                                                              
+                 0                                                              
+                 0                                                              
+                 0                                                              
+
+14 rows selected.
+
+SQL> select instr('developer','l',-4,1)from emp;
+
+INSTR('DEVELOPER','L',-4,1)                                                     
+---------------------------                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+
+INSTR('DEVELOPER','L',-4,1)                                                     
+---------------------------                                                     
+                          5                                                     
+                          5                                                     
+                          5                                                     
+
+14 rows selected.
+
+SQL> spool off
